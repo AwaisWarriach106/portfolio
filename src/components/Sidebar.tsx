@@ -50,7 +50,7 @@ export function Sidebar() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-4">
             <div className="relative mx-auto h-[5.25rem] w-[5.25rem] shrink-0 overflow-hidden rounded-full ring-1 ring-white/10 ring-offset-2 ring-offset-zinc-950 sm:mx-0 sm:rounded-2xl sm:ring-offset-0">
               <Image
-                src="/assets/img/profile.png"
+                src="/assets/img/profile.webp"
                 alt={`${profile.name} — profile photo`}
                 fill
                 priority

@@ -77,11 +77,13 @@ function ProjectShot({
   alt,
   layout = "landscape",
   fit = "cover",
+  priority,
 }: {
   src?: string;
   alt: string;
   layout?: "landscape" | "portrait";
   fit?: "cover" | "contain";
+  priority?: boolean;
 }) {
   if (!src) return <PlaceholderShot alt={alt} />;
   const aspect = "aspect-[16/9]";
@@ -100,7 +102,7 @@ function ProjectShot({
               fill
               sizes="(min-width: 1024px) 520px, 92vw"
               className="object-contain"
-              priority
+              priority={priority}
             />
           </div>
 
@@ -111,7 +113,7 @@ function ProjectShot({
             fill
             sizes="(min-width: 1024px) 520px, 92vw"
             className="hidden sm:block object-cover opacity-45 blur-sm scale-110"
-            priority
+            priority={false}
           />
           <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_38%,rgba(255,255,255,0.14),transparent_62%)]" />
           <div className="hidden sm:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.60))]" />
@@ -125,7 +127,7 @@ function ProjectShot({
                   fill
                   sizes="(min-width: 1024px) 520px, 92vw"
                   className="object-contain"
-                  priority
+                  priority={priority}
                 />
               </div>
             </div>
@@ -146,7 +148,7 @@ function ProjectShot({
                     ? "object-contain p-0 sm:p-3"
                     : "object-cover"
                 }
-                priority
+                priority={priority}
               />
             </div>
           </div>
@@ -167,9 +169,11 @@ type Shot = {
 function ProjectCarouselRow({
   shots,
   fallbackAlt,
+  priority,
 }: {
   shots: Shot[];
   fallbackAlt: string;
+  priority?: boolean;
 }) {
   const normalized = useMemo(() => shots.filter(Boolean).slice(0, 3), [shots]);
   const count = normalized.length;
@@ -203,7 +207,7 @@ function ProjectCarouselRow({
               if (!s2) {
                 return (
                   <>
-                    <CarouselShotCell s={s0} fallbackAlt={fallbackAlt} priority />
+                    <CarouselShotCell s={s0} fallbackAlt={fallbackAlt} priority={priority} />
                     <CarouselArrowCell />
                     <CarouselShotCell s={s1} fallbackAlt={fallbackAlt} />
                   </>
@@ -212,7 +216,7 @@ function ProjectCarouselRow({
 
               return (
                 <>
-                  <CarouselShotCell s={s0} fallbackAlt={fallbackAlt} priority />
+                  <CarouselShotCell s={s0} fallbackAlt={fallbackAlt} priority={priority} />
                   <CarouselArrowCell />
                   <CarouselShotCell s={s1} fallbackAlt={fallbackAlt} />
                   <CarouselArrowCell />
@@ -230,9 +234,11 @@ function ProjectCarouselRow({
 function ProjectGallery({
   shots,
   fallbackAlt,
+  priority,
 }: {
   shots?: Shot[];
   fallbackAlt: string;
+  priority?: boolean;
 }) {
   const normalized = useMemo(() => (shots ?? []).filter(Boolean), [shots]);
   const [active, setActive] = useState(0);
@@ -247,6 +253,7 @@ function ProjectGallery({
         alt={current.alt || fallbackAlt}
         layout={current.layout}
         fit={current.fit}
+        priority={priority}
       />
 
       {normalized.length > 1 ? (
@@ -315,8 +322,9 @@ export function FeaturedProjects() {
             aria-label="Featured projects"
             className="m-0 grid list-none gap-4 p-0 sm:gap-5 lg:gap-6"
           >
-            {projects.slice(0, 5).map((p) => {
+            {projects.slice(0, 5).map((p, idx) => {
               const hasGitHub = isUsableLink((p.links as { github?: string }).github);
+              const eagerScreenshot = idx === 0;
 
               return (
                 <FadeIn key={p.slug} as="li" y={10}>
@@ -376,6 +384,7 @@ export function FeaturedProjects() {
                           <ProjectCarouselRow
                             shots={p.frontend.screenshots}
                             fallbackAlt={p.frontend.screenshotAlt}
+                            priority={eagerScreenshot}
                           />
                         ) : (
                           <ProjectGallery
@@ -393,6 +402,7 @@ export function FeaturedProjects() {
                                 : undefined)
                             }
                             fallbackAlt={p.frontend.screenshotAlt}
+                            priority={eagerScreenshot}
                           />
                         )}
                       </div>

@@ -640,7 +640,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </div>
             <div className="mt-1 divide-y divide-white/[0.05]">
               {gallery.map((shot, idx) => (
-                <StoryRow key={`${shot.src}-${idx}`} index={idx} shot={shot} priority={idx < 2} />
+                <StoryRow key={`${shot.src}-${idx}`} index={idx} shot={shot} priority={idx === 0} />
               ))}
             </div>
           </motion.section>

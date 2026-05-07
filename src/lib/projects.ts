@@ -163,7 +163,7 @@ export function resolveCaseStudyNarrative(project: Project): CaseStudyNarrative 
 
 export const projects: Project[] = [
   {
-    slug: "multi-tenant-saas",
+    slug: "hr-management-system",
     title: "HR Management System",
     oneLiner:
       "Full-stack HR management system with attendance tracking, approvals, and mobile field support.",
@@ -392,7 +392,7 @@ export const projects: Project[] = [
     tags: ["ASP.NET Core", "RBAC", "PostgreSQL", "Angular","Layered architecture"],
   },
   {
-    slug: "file-pipeline",
+    slug: "healthcare-web-app",
     title: "Health Care Web App",
     oneLiner:
       "Full-stack healthcare web app with role-based access and discrepancy tracking.",
@@ -747,7 +747,7 @@ export const projects: Project[] = [
             "Skeleton loaders match final layout to avoid CLS on slower devices.",
           ],
           tags: ["React Native", "Minimal API"],
-          src: "/assets/img/expense/home.png",
+          src: "/assets/img/expense/home.webp",
           alt: "Expense management app home screen",
           layout: "portrait",
           fit: "contain",
@@ -764,7 +764,7 @@ export const projects: Project[] = [
             "Export/share flows stream CSV from API for large histories instead of buffering in RAM.",
           ],
           tags: ["UX", "PostgreSQL"],
-          src: "/assets/img/expense/transactions.png",
+          src: "/assets/img/expense/transactions.webp",
           alt: "Expense transactions screen",
           layout: "portrait",
           fit: "contain",
@@ -781,7 +781,7 @@ export const projects: Project[] = [
             "Dark-native palette aligned with OS theme to reduce eye strain in evening review.",
           ],
           tags: ["Reporting", "Performance"],
-          src: "/assets/img/expense/analysis.png",
+          src: "/assets/img/expense/analysis.webp",
           alt: "Expense analytics screen",
           layout: "portrait",
           fit: "contain",
