@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="670" viewBox="0 120 1700 670" fill="none" role="img" aria-label="MoneyMap architecture diagram">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#0A0A0A" />
+      <stop offset="1" stop-color="#0A0A0A" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#FFFFFF" fill-opacity="0.82" />
+    </marker>
+    <style>
+      .label { font: 700 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #F4F4FF; }
+      .muted { font: 500 13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #B3B3C9; }
+      .chip  { font: 600 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #C7C7DD; }
+      .mono  { font: 600 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill: #B8B8CE; }
+      .subtitle { font: 600 13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #A1A1B7; letter-spacing: 2.2px; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect x="0" y="120" width="1700" height="670" rx="34" fill="url(#bg)" />
+
+  <!-- Normalize margins: consistent, minimal padding -->
+  <g transform="translate(-48 -10)">
+
+    <!-- Left: client (center-aligned with API container) -->
+    <g>
+      <rect x="105" y="398" width="300" height="190" rx="18" fill="#0B0B0D" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.5"/>
+      <text x="130" y="436" class="label">Mobile App</text>
+      <text x="130" y="463" class="muted">React Native</text>
+      <rect x="130" y="488" width="80" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="142" y="506" class="chip">HTTPS</text>
+      <rect x="216" y="488" width="124" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="228" y="506" class="chip">JWT bearer</text>
+    </g>
+
+    <!-- Middle: security boundary (center-aligned with API container) -->
+    <g>
+      <rect x="470" y="398" width="300" height="190" rx="18" fill="#0B0B0D" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.5"/>
+      <text x="495" y="436" class="label">Security boundary</text>
+      <text x="495" y="464" class="muted">JWT authentication</text>
+      <text x="495" y="489" class="muted">User-scoped authorization</text>
+      <text x="495" y="514" class="muted">Validation per endpoint</text>
+    </g>
+
+    <!-- Right: ASP.NET Core API (taller for clarity) -->
+    <g>
+      <rect x="860" y="210" width="500" height="565" rx="20" fill="#0B0B0D" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.6"/>
+      <text x="890" y="250" class="subtitle">ASP.NET CORE API</text>
+
+      <!-- API host -->
+      <rect x="890" y="282" width="440" height="62" rx="14" fill="#0E0E12" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="915" y="310" class="label">API Gateway</text>
+      <text x="915" y="333" class="muted">Routes requests &#183; validates JWT &#183; forwards to modules</text>
+
+      <!-- Modules -->
+      <rect x="890" y="390" width="440" height="200" rx="14" fill="#0E0E12" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="915" y="418" class="label">Core modules</text>
+      <text x="915" y="441" class="muted">Layered architecture per module: API → Domain → Data</text>
+
+      <!-- Module chips (fit within container; no overflow) -->
+      <rect x="915" y="468" width="150" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="927" y="486" class="chip">Users Module</text>
+      <rect x="1071" y="468" width="175" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="1083" y="486" class="chip">Accounts Module</text>
+
+      <rect x="915" y="502" width="150" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="927" y="520" class="chip">Books Module</text>
+      <rect x="1071" y="502" width="150" height="26" rx="13" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="1083" y="520" class="chip">Ledger Module</text>
+
+      <!-- Shared kernel -->
+      <rect x="890" y="630" width="440" height="62" rx="14" fill="#0E0E12" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="915" y="658" class="label">Shared Kernel</text>
+      <text x="915" y="681" class="muted">Common types, abstractions, infrastructure</text>
+
+      <!-- Notes intentionally removed for clarity -->
+    </g>
+
+    <!-- Database (right side; center-aligned with API container) -->
+    <g>
+      <rect x="1390" y="398" width="300" height="190" rx="18" fill="#0B0B0D" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.5"/>
+      <text x="1415" y="436" class="label">PostgreSQL Database</text>
+      <text x="1415" y="464" class="muted">Persistent storage for all app data</text>
+      <rect x="1415" y="488" width="250" height="28" rx="14" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="1427" y="507" class="mono">Users &#183; Accounts &#183; Books</text>
+      <rect x="1415" y="522" width="250" height="28" rx="14" fill="#111115" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <text x="1427" y="541" class="mono">Ledger entries &#183; journals</text>
+    </g>
+
+    <!-- Arrows (simplified; less clutter, same style) -->
+    <g stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="3" fill="none">
+      <!-- Mobile -> Security -->
+      <path d="M 405 493 L 430 493 L 430 493 L 470 493" marker-end="url(#arrow)"/>
+      <!-- Security -> API Gateway -->
+      <path d="M 770 493 L 824 493 L 824 313 L 890 313" marker-end="url(#arrow)"/>
+
+      <!-- API Host -> Modules group (delegation) -->
+      <path d="M 1110 344 L 1110 390" marker-end="url(#arrow)"/>
+
+      <!-- Modules group -> Shared Kernel (references) -->
+      <path d="M 1110 590 L 1110 630" marker-end="url(#arrow)"/>
+
+      <!-- Modules group -> PostgreSQL -->
+      <path d="M 1330 490 L 1360 490 L 1360 493 L 1390 493" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- Relationship labels intentionally removed for clarity -->
+
+  </g>
+</svg>
+

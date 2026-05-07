@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/**
+ * Color tokens tuned for ~WCAG 2.2 AA contrast on #0a0a0a (normal text ≥ 4.5:1).
+ * Use --foreground-body for paragraph copy; reserve zinc-500+ only for ≥12px or non-essential UI chrome.
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  --background: #0a0a0a;
+  /* zinc-100 — primary headings / high-emphasis (~15:1) */
+  --foreground: #f4f4f5;
+  /* zinc-300 — default body on dark (~11:1) */
+  --foreground-body: #d4d4d8;
+  /* zinc-400 — secondary copy, ≥14px recommended (~7:1) */
+  --foreground-muted: #a1a1aa;
+  --accent: #22d3ee;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground-body);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.625;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/**
+ * In-page anchors clear the sticky mobile header + notch.
+ * lg: matches desktop where the header is not sticky over content.
+ */
+.scroll-section {
+  scroll-margin-top: max(4.75rem, calc(2.75rem + env(safe-area-inset-top, 0px)));
+}
+
+@media (min-width: 1024px) {
+  .scroll-section {
+    scroll-margin-top: 5rem;
+  }
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: var(--foreground);
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+/* WCAG 2.4.7 — visible focus on interactive elements without bespoke ring styles */
+/* Buttons often use focus rings in components; links & form fields use outline */
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
