@@ -357,7 +357,7 @@ export const projects: Project[] = [
       ],
     },
     frontend: {
-      screenshotSrc: "/assets/img/hr_dashboard.webp",
+      screenshotSrc: "/assets/img/hr/dashboard.webp",
       screenshotAlt: "HR dashboard UI preview",
       highlights: [
         "Angular web shell covering profiles, org, time, attendance, absences, rota, chat, and project hubs (tickets + docs)",
@@ -498,7 +498,7 @@ export const projects: Project[] = [
       ],
     },
     frontend: {
-      screenshotSrc: "/assets/img/healthcare_dashboard.webp",
+      screenshotSrc: "/assets/img/healthcare/dashboard.webp",
       screenshotAlt: "Healthcare web UI preview",
       highlights: [
         "React SPA with route-level code splitting for faster first paint on large datasets",
@@ -747,7 +747,7 @@ export const projects: Project[] = [
             "Skeleton loaders match final layout to avoid CLS on slower devices.",
           ],
           tags: ["React Native", "Minimal API"],
-          src: "/assets/img/expense_home.png",
+          src: "/assets/img/expense/home.png",
           alt: "Expense management app home screen",
           layout: "portrait",
           fit: "contain",
@@ -764,7 +764,7 @@ export const projects: Project[] = [
             "Export/share flows stream CSV from API for large histories instead of buffering in RAM.",
           ],
           tags: ["UX", "PostgreSQL"],
-          src: "/assets/img/expense_transactions.png",
+          src: "/assets/img/expense/transactions.png",
           alt: "Expense transactions screen",
           layout: "portrait",
           fit: "contain",
@@ -781,14 +781,13 @@ export const projects: Project[] = [
             "Dark-native palette aligned with OS theme to reduce eye strain in evening review.",
           ],
           tags: ["Reporting", "Performance"],
-          src: "/assets/img/expense_analysis.png",
+          src: "/assets/img/expense/analysis.png",
           alt: "Expense analytics screen",
           layout: "portrait",
           fit: "contain",
           scale: 1.04,
         },
       ],
-      screenshotSrc: "/assets/img/expense_home.png",
       screenshotAlt: "Expense management mobile app preview",
       highlights: [
         "Simple mobile flows for expense capture and categorization",
